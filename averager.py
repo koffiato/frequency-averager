@@ -24,6 +24,6 @@ with open(output_file, "w") as out:
             raise ValueError(f"Frequency mismatch: {freq1} vs {freq2}")
 
         avg_response = (float(resp1) + float(resp2)) / 2
-        out.write(f"{freq1} {avg_response:.6f}\n")
+        out.write(f"{freq1} {avg_response:.14f}\n")
 
 print(f"Averaged file saved as: {output_file}")
