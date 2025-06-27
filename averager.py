@@ -1,13 +1,34 @@
-# Ask for input file names
-file1 = input("Enter the name of the first file (e.g. Dunu Glacier [1].txt): ").strip()
-file2 = input("Enter the name of the second file (e.g. Dunu Glacier [2].txt): ").strip()
-
-# Output file name
 import os
+import tkinter as tk
+from tkinter import filedialog
+
+# Hide the main tkinter window
+root = tk.Tk()
+root.withdraw()
+
+# Ask for input files using file picker
+file1 = filedialog.askopenfilename(title="Select the first file", filetypes=[("Text files", "*.txt"), ("All files", "*.*")])
+file2 = filedialog.askopenfilename(title="Select the second file", filetypes=[("Text files", "*.txt"), ("All files", "*.*")])
+
+if not file1 or not file2:
+    print("File selection cancelled.")
+    exit()
 
 base1 = os.path.splitext(os.path.basename(file1))[0]
 base2 = os.path.splitext(os.path.basename(file2))[0]
-output_file = f"{base1}_{base2}_Averaged.txt"
+default_output = f"{base1}_{base2}_Averaged.txt"
+
+# Ask for output file location using file picker
+output_file = filedialog.asksaveasfilename(
+    title="Save Averaged File As",
+    defaultextension=".txt",
+    initialfile=default_output,
+    filetypes=[("Text files", "*.txt"), ("All files", "*.*")]
+)
+
+if not output_file:
+    print("Save cancelled.")
+    exit()
 
 # Read both files
 with open(file1, "r") as f1, open(file2, "r") as f2:
