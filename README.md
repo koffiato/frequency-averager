@@ -7,18 +7,18 @@ A simple Python tool to average the frequency response of left and right audio c
 - Reads two plain text files containing frequency response data (frequency and response per line).
 - Checks for frequency alignment between files.
 - Outputs a new file with the averaged response.
+- Provides clear error messages for mismatched frequencies or invalid input.
 
 ## Usage
 
-1. Place your two frequency response files (e.g., `Dunu Glacier [1].txt` and `Dunu Glacier [2].txt`) in the same directory as `averager.py`.
-2. Run the script:
+1. Run the script:
 
     ```sh
     python averager.py
     ```
 
-3. Enter the names of your two files when prompted.
-4. The script will create a new file named `<file1>_<file2>_Averaged.txt` containing the averaged data.
+3. Select the files when prompted.
+4. Save anywhere you desire.
 
 ## Example
 
