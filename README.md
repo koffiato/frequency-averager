@@ -10,10 +10,10 @@ A simple Python tool to average the frequency response of left and right audio c
 
 ## Features
 
-- Reads two plain text files containing frequency response data (frequency and response per line).
-- Checks for frequency alignment between files.
+- Reads two or more plain text files containing frequency response data (frequency and response per line).
+- Checks for frequency alignment and line count between files.
 - Outputs a new file with the averaged response.
-- Provides clear error messages for mismatched frequencies or invalid input.
+- Provides clear error messages for mismatched frequencies, line count, or invalid input.
 - Supports both GUI (file picker) and CLI usage.
 - Accepts files with either space or comma as separator.
 
@@ -21,24 +21,44 @@ A simple Python tool to average the frequency response of left and right audio c
 
 ### GUI Mode
 
-1. Run the script without arguments:
+1a. Run the script in GUI mode (file picker):
 
-    ```sh
-    python averager.py
-    ```
+```sh
+python averager.py --gui
+```
 
-2. Select the two files when prompted.
-3. Choose where to save the averaged output.
+1b. Or simply run without arguments (GUI will launch if no CLI args are provided):
+
+```sh
+python averager.py
+```
+
+2.  Select the number of input files (minimum 2).
+3.  Pick the files to average.
+4.  Choose where to save the output.
 
 ### CLI Mode
 
-You can also run the script with file paths as arguments:
+1a. Run the script with arguments:
 
 ```sh
-python averager.py left.txt right.txt output.txt
+python averager.py left.txt right.txt -o output.txt
+```
+
+1b. Or specify more files:
+
+```sh
+python averager.py -m 3 file1.txt file2.txt file3.txt -o averaged.txt
 ```
 
 If you do not have `tkinter` installed, use CLI mode.
+
+#### Arguments
+
+- `-m` : Number of input files (default: 2)
+- `inputs` : Paths to input files (must match `-m`)
+- `-o`, `--output` : Path to output file
+- `--gui` : Run in GUI mode
 
 ## Example
 
